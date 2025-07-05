@@ -1,0 +1,30 @@
+<!-- templates/_about.html -->
+<section id="about" class="py-20 bg-gray-900 fade-in-section">
+    <div class="container mx-auto px-4 max-w-4xl">
+        <h2 class="text-5xl font-bold text-center text-indigo-400 mb-12">About Me</h2>
+        <div class="flex flex-col md:flex-row items-center md:space-x-10">
+            
+            <!-- Profile Image -->
+            <div class="md:w-1/3 mb-8 md:mb-0">
+                <img src="{{ url_for('static', filename='profile.jpg') }}"
+                     alt="Sandip Kumar Mohanty"
+                     class="rounded-full shadow-lg border-4 border-indigo-500 mx-auto transform transition-transform duration-500 hover:scale-105"
+                     style="width: 250px; height: 250px; object-fit: cover;">
+            </div>
+
+            <!-- About Text -->
+            <div class="md:w-2/3 text-lg leading-relaxed text-gray-300">
+                <p class="mb-4">
+                    I am Sandip Kumar Mohanty, currently pursuing a Bachelor of Technology in Computer Science and Engineering from NIST University. I am passionate about developing software solutions that make a difference.
+                </p>
+                <p class="mb-4">
+                    My areas of interest include web development, backend systems, and databases. I have strong foundational knowledge in <strong>Python</strong>, <strong>Flask</strong>, <strong>SQL</strong>, and <strong>DBMS</strong>, with practical skills in tools like <strong>Microsoft Excel</strong>.
+                </p>
+                <p>
+                    I am always eager to learn new technologies and contribute to innovative projects. This portfolio showcases some of my work and skills.
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>

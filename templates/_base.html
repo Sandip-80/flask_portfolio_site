@@ -1,0 +1,134 @@
+<!-- templates/_base.html -->
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Sandip Kumar Mohanty - Portfolio{% endblock %}</title>
+    <!-- Tailwind CSS CDN for modern styling and responsiveness -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter for clean typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Custom styles for the Inter font and scroll behavior */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Basic fade-in animation for sections (controlled by JS) */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Typing effect for hero title */
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #6366f1; } /* Indigo-500 */
+        }
+        .typewriter h1 {
+            overflow: hidden; /* Ensures the content is not revealed until the animation */
+            border-right: .15em solid #6366f1; /* The caret */
+            white-space: nowrap; /* Keeps the content on a single line */
+            margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+            letter-spacing: .05em; /* Adjust as needed */
+            animation:
+                typing 3.5s steps(40, end),
+                blink-caret .75s step-end infinite;
+        }
+        /* Custom scrollbar for a cleaner look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1a202c; /* Dark background */
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #4a5568; /* Slightly lighter gray */
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #6b7280; /* Even lighter on hover */
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-200 antialiased">
+
+    <!-- Navigation Bar -->
+    <header class="bg-gray-800 shadow-lg fixed w-full z-50 py-4">
+        <nav class="container mx-auto flex justify-between items-center px-4">
+            <a href="#hero" class="text-2xl font-bold text-indigo-400 hover:text-indigo-300 transition-colors duration-300">
+                Sandip Kumar Mohanty
+            </a>
+            <ul class="flex space-x-6">
+                <li><a href="#about" class="text-lg hover:text-indigo-400 transition-colors duration-300">About</a></li>
+                <li><a href="#skills" class="text-lg hover:text-indigo-400 transition-colors duration-300">Skills</a></li>
+                <li><a href="#projects" class="text-lg hover:text-indigo-400 transition-colors duration-300">Projects</a></li>
+                <li><a href="#education" class="text-lg hover:text-indigo-400 transition-colors duration-300">Education</a></li>
+                <li><a href="#contact" class="text-lg hover:text-indigo-400 transition-colors duration-300">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    {% block content %}{% endblock %}
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 py-8 text-center text-gray-500 text-sm">
+        <div class="container mx-auto px-4">
+            &copy; 2023 Sandip Kumar Mohanty. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- JavaScript for scroll-based animations and potentially other effects -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('.fade-in-section');
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1 // Trigger when 10% of the section is visible
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        // If you want the animation to play only once, uncomment the line below:
+                        // observer.unobserve(entry.target);
+                    } else {
+                        // Optional: remove 'is-visible' if you want the animation to replay on scroll up
+                        // entry.target.classList.remove('is-visible');
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+
+            // Optional: Back to top button logic
+            // const backToTopButton = document.getElementById('back-to-top');
+            // window.addEventListener('scroll', () => {
+            //     if (window.pageYOffset > 300) { // Show button after scrolling 300px
+            //         backToTopButton.classList.remove('hidden');
+            //     } else {
+            //         backToTopButton.classList.add('hidden');
+            //     }
+            // });
+            // backToTopButton.addEventListener('click', () => {
+            //     window.scrollTo({ top: 0, behavior: 'smooth' });
+            // });
+        });
+    </script>
+</body>
+</html>
