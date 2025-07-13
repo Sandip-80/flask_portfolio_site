@@ -4,7 +4,7 @@ This is my personal portfolio website built using **Flask** and **Python**, show
 
 - **Backend:** Python, Flask
 - **Frontend:** HTML, CSS, JavaScript
-- **Tools:** Jinja2, Bootstrap/Tailwind (if used), Git, GitHub
+- **Tools:** Jinja2,Git, GitHub
 
 ## 📁 Features
 
